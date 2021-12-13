@@ -5,13 +5,19 @@ import { fetchUpcomingFilmsFX } from '@/store/films/upcoming-films/effects'
 import FilmsList from '@/components/films-list/FilmsList'
 
 const UpcomingFilms = () => {
-  const { results, dates } = useStore($upcomingFilms)
-  console.log('dates', dates)
+  const { results, page, total_pages } = useStore($upcomingFilms)
 
   useEffect(() => {
     fetchUpcomingFilmsFX()
   }, [])
-  return <FilmsList list={results} />
+  return (
+    <FilmsList
+      list={results}
+      fetchData={fetchUpcomingFilmsFX}
+      page={page}
+      total_pages={total_pages}
+    />
+  )
 }
 
 export default UpcomingFilms

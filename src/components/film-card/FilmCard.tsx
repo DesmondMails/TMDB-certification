@@ -9,9 +9,14 @@ import {
   IconButton,
   Box,
 } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { useStyles } from './styles'
 import { DatesUpcoming } from '@/store/films/upcoming-films/interfaces'
+import { useStyles } from './styles'
+import { addToFavoritesEvent } from '@/store/user/events'
+import { useStore } from 'effector-react'
+import { $userStore } from '@/store/user'
+import noImage from '@assets/noImage.png'
 
 interface IFilmCard {
   title: string
@@ -30,12 +35,29 @@ const FilmCard: FC<IFilmCard> = ({
   rate,
   release,
 }) => {
+  const { favoriteFilms } = useStore($userStore)
   const styles = useStyles()
+  const navigate = useNavigate()
+
+  const isFavorite =
+    favoriteFilms?.filter((film) => film.id === id)?.length > 0 ?? false
+
+  const handleDetailsClick = () => {
+    navigate(`/film-detail/${id}`)
+  }
+  const handleAddToFavorite = () => {
+    const payload = { title, overview, id, poster_path, vote_average: rate }
+    addToFavoritesEvent({ film: payload })
+  }
 
   return (
     <Card className={styles.card}>
       <CardMedia
-        image={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+        image={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w300/${poster_path}`
+            : noImage
+        }
         className={styles.media}
         component='img'
       />
@@ -64,9 +86,9 @@ const FilmCard: FC<IFilmCard> = ({
         )} */}
       </CardContent>
       <CardActions className={styles.actions}>
-        <Button>Read more</Button>
-        <IconButton>
-          <FavoriteIcon />
+        <Button onClick={handleDetailsClick}>Read more</Button>
+        <IconButton onClick={handleAddToFavorite}>
+          <FavoriteIcon color={isFavorite ? 'error' : 'disabled'} />
         </IconButton>
       </CardActions>
     </Card>

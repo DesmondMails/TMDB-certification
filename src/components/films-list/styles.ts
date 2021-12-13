@@ -8,5 +8,18 @@ export const useStyles = makeStyles({
   parentContainer: {
     marginTop: '40px',
     marginBottom: '120px',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  buttonContainer: {
+    alignSelf: 'center',
+    marginTop: '30px',
+  },
+  button: {
+    fontSize: '40px',
+  },
+  butttonIcon: {
+    display: 'flex',
+    flexDirection: 'column',
   },
 })

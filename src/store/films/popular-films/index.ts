@@ -11,7 +11,7 @@ export const $popularFilmsStore = createStore<FilmsStore>({
 
 $popularFilmsStore.on(fetchPopularFilmsFX.doneData, (state, payload: any) => ({
   page: payload.page,
-  results: payload.results,
+  results: [...state.results, ...payload.results],
   total_pages: payload.total_pages,
   total_results: payload.total_results,
 }))

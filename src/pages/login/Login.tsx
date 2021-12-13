@@ -13,10 +13,11 @@ import { LoginForm } from '@/types/loginTypes'
 import InputField from '@/components/form-fields/input-field/InputField'
 import { authCredentials } from '@/constants'
 import { loginEvent } from '@/store/auth/events/login'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { state } = useLocation()
 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -44,7 +45,7 @@ const Login = () => {
       setError('password', { message: 'Incorect password!' })
     } else {
       loginEvent({ username })
-      navigate('/')
+      navigate(state?.path || '/')
     }
   }
 

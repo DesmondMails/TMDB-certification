@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles'
 export const useStyles = makeStyles({
   card: {
     maxWidth: '345px',
+    width: '100%',
     margin: 0,
   },
   media: {
