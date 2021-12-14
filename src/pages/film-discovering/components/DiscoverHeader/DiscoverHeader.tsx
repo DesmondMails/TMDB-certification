@@ -1,16 +1,15 @@
-import { FC, Dispatch, SetStateAction, useState } from 'react'
+import { FC, Dispatch, SetStateAction, useState, useEffect } from 'react'
+import { useStore } from 'effector-react'
 import { Genre } from '@/store/film-detail/interfaces'
 import { $genresStore } from '@/store/genres'
 import { Tab, Tabs } from '@mui/material'
-import { useStore } from 'effector-react'
+import { cleanDiscoverStoreEvent } from '@/store/discover/events'
 import DatePickers from './components/date-pickers/DatePickers'
 import GenresSelect from './components/genres-select/GenresSelect'
-import { useStyles } from './styles'
-import { useEffect } from 'react'
 import { getGenres } from '@/utils/getGenres'
 import { dataForamatter } from '@/utils/dataForamatter'
 import { discoverQuery } from '../../helpers'
-import { cleanDiscoverStoreEvent } from '@/store/discover/events'
+import { useStyles } from './styles'
 
 interface IDiscoverHeader {
   type: number
