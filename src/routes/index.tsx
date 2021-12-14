@@ -5,6 +5,9 @@ import FilmDetails from '@/pages/film-details/FilmDetails'
 import FavoriteFilms from '@/pages/favorites-films/FavoriteFilms'
 import AuthGuarded from './components/AuthGuarded'
 import SearchPage from '@/pages/search-page/SearchPage'
+import FilmDiscovering from '@/pages/film-discovering/FilmDiscovering'
+import NotFound from '@/pages/errors-pages/NotFound/NotFound'
+import ErrorsGeneraly from '@/pages/errors-pages/ErrorsGeneraly/ErrorsGeneraly'
 
 export const useRoutes = () => {
   return (
@@ -42,6 +45,16 @@ export const useRoutes = () => {
           </AuthGuarded>
         }
       />
+      <Route
+        path='/discover'
+        element={
+          <AuthGuarded>
+            <FilmDiscovering />
+          </AuthGuarded>
+        }
+      />
+      <Route path='/errors/:error' element={<ErrorsGeneraly />} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }

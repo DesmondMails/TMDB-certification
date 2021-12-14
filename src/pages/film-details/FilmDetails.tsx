@@ -1,9 +1,9 @@
+import { useEffect } from 'react'
 import { Button, Container, Grid, Rating, Typography } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { useStyles } from './styles'
 import { useStore } from 'effector-react'
 import { $singleFilmDetail } from '@/store/film-detail'
-import { FC, useEffect, useLayoutEffect } from 'react'
 import { fetchFilmDetailsFX } from '@/store/film-detail/effects'
 import { Genre, ProductionCountries } from '@/store/film-detail/interfaces'
 import { Formatter } from '@/utils/formatter'
@@ -41,7 +41,7 @@ const FilmDetails = () => {
       fetchFilmDetailsFX({ id: +id })
     }
     return () => clearFilmInfoEvent()
-  }, [])
+  }, [id])
 
   return (
     <main style={{ position: 'relative' }}>

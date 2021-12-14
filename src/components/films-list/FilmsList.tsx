@@ -4,7 +4,7 @@ import { FilmsInterface } from '@store/films/shared/shared-interfaces'
 import FilmCard from '../film-card/FilmCard'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import { useStyles } from './styles'
-import { FilmsRequest, RequestParams } from '@/types/paramsTypes'
+import { RequestParams } from '@/types/paramsTypes'
 import { FavoiteFilms } from '@/store/user/interfaces'
 
 interface IFilmsList {
@@ -27,7 +27,7 @@ const FilmsList: FC<IFilmsList> = ({
   const handleCLick = () => {
     const params: RequestParams = {}
     if (page) {
-      params.page = page
+      params.page = page + 1
     }
     if (query) {
       params.query = query

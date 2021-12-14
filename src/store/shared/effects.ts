@@ -1,5 +1,5 @@
 import api from '@/services/api'
-import { FilmsRequest, RequestParams } from '@/types/paramsTypes'
+import { RequestParams } from '@/types/paramsTypes'
 import { createEffect } from 'effector'
 
 export const fetchSingleCallback = async (
@@ -11,11 +11,12 @@ export const fetchSingleCallback = async (
   return response.data
 }
 
-export const fetchFX = async (path: string, params: RequestParams = {}) => {
-  try {
-    const response = await api.get(`/${path}`, { params })
-    return response.data
-  } catch (error) {
-    return error
-  }
-}
+export const fetchListsFX = (path: string) =>
+  createEffect(async (params: RequestParams = {}) => {
+    try {
+      const response = await api.get(`/${path}`, { params })
+      return response.data
+    } catch (error) {
+      return error
+    }
+  })

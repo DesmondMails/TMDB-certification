@@ -1,16 +1,10 @@
 import { FC } from 'react'
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material'
+import { Drawer, List } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import SearchIcon from '@mui/icons-material/Search'
 import SideMenuItem from './menu-item/SideMenuItem'
+import ExploreIcon from '@mui/icons-material/Explore'
 
 interface ISideMenu {
   isOpen: boolean
@@ -41,6 +35,12 @@ const SideMenu: FC<ISideMenu> = ({ isOpen, toggleDrawer }) => {
           icon={<SearchIcon />}
           text='Search'
           path='search'
+          toggleDrawer={toggleDrawer}
+        />
+        <SideMenuItem
+          icon={<ExploreIcon />}
+          text='Discover'
+          path='discover'
           toggleDrawer={toggleDrawer}
         />
       </List>

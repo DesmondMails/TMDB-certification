@@ -1,7 +1,6 @@
 import { createStore } from 'effector'
-import { fetchUserDetailsFX } from './effects'
 import { addToFavoritesEvent } from './events'
-import { UserInfo, UserStore } from './interfaces'
+import { UserStore } from './interfaces'
 
 export const $userStore = createStore<UserStore>({
   favoriteFilms: [],

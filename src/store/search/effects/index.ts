@@ -1,11 +1,5 @@
-import { fetchFX } from '@/store/shared/effects'
-import { RequestParams } from '@/types/paramsTypes'
-import { createEffect } from 'effector'
+import { fetchListsFX } from '@/store/shared/effects'
 
-export const searchMoviesFX = createEffect((params: RequestParams) =>
-  fetchFX('search/movie', params)
-)
+export const searchMoviesFX = fetchListsFX('search/movie')
 
-export const searchTvShowsFX = createEffect((params: RequestParams) =>
-  fetchFX('search/tv', params)
-)
+export const searchTvShowsFX = fetchListsFX('search/tv')

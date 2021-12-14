@@ -9,9 +9,6 @@ import {
   Toolbar,
   Typography,
   IconButton,
-  Menu,
-  MenuItem,
-  Drawer,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { TOKEN_KEY } from '@/constants'
@@ -37,15 +34,16 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            onClick={() => toggleDrawer(!isOpen)}
-          >
-            <MenuIcon />
-          </IconButton>
-
+          {(username || token) && (
+            <IconButton
+              size='large'
+              edge='start'
+              color='inherit'
+              onClick={() => toggleDrawer(!isOpen)}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             Films
           </Typography>

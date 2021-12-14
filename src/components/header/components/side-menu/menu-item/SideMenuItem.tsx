@@ -29,10 +29,7 @@ const SideMenuItem: FC<IMenuItem> = ({
   return (
     <ListItem>
       <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          {/* <HomeIcon /> */}
-          {icon}
-        </ListItemIcon>
+        <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={text} />
       </ListItemButton>
     </ListItem>

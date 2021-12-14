@@ -1,3 +1,3 @@
-import { fetchFilmsFX } from '../../shared/effects'
+import { fetchListsFX } from '@/store/shared/effects'
 
-export const fetchUpcomingFilmsFX = fetchFilmsFX('movie/upcoming')
+export const fetchUpcomingFilmsFX = fetchListsFX('movie/upcoming')
