@@ -11,6 +11,17 @@ export const fetchSingleCallback = async (
   return response.data
 }
 
+export const fetchSingleFX = (path: string) =>
+  createEffect(async (params: RequestParams = {}) => {
+    try {
+      const response = await api.get(`/${path}${params?.id ?? ''}`)
+
+      return response.data
+    } catch (error) {
+      return error
+    }
+  })
+
 export const fetchListsFX = (path: string) =>
   createEffect(async (params: RequestParams = {}) => {
     try {

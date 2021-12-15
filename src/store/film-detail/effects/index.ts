@@ -1,7 +1,3 @@
-import { fetchSingleCallback } from '@/store/shared/effects'
-import { RequestParams } from '@/types/paramsTypes'
-import { createEffect } from 'effector'
+import { fetchSingleFX } from '@/store/shared/effects'
 
-export const fetchFilmDetailsFX = createEffect((params: RequestParams) =>
-  fetchSingleCallback(`movie/`, params)
-)
+export const fetchFilmDetailsFX = fetchSingleFX(`movie/`)
